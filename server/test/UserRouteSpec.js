@@ -2,8 +2,8 @@
 // const supertest = require('supertest');
 // const ObjId = require('mongodb').ObjectID;
 //
-// const app = require('../bin/www');
-// const user = require('../server/users/userEntity');
+// const app = require('../../bin/www');
+// const user = require('../users/userEntity');
 // const url = supertest('http://localhost:8080/users');
 //
 // const userObjects = [{

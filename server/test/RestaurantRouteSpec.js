@@ -2,8 +2,8 @@
 // const supertest = require('supertest');
 // const ObjId = require('mongodb').ObjectID;
 //
-// const app = require('../bin/www');
-// const restaurants = require('../server/restaurant/restaurantEntity');
+// const app = require('../../bin/www');
+// const restaurants = require('../restaurant/restaurantEntity');
 // const url = supertest('http://localhost:8080/restaurant');
 //
 // const restaurantObjects = [{

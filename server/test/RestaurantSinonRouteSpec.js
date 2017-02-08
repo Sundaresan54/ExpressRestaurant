@@ -3,8 +3,8 @@ const supertest = require('supertest');
 const sinon = require('sinon');
 const sinonMongoose = require('sinon-mongoose');
 const expect = require('chai').expect;
-const app = require('../bin/www');
-const Restaurants = require('../server/restaurant/restaurantEntity');
+const app = require('../../bin/www');
+const Restaurants = require('../restaurant/restaurantEntity');
 const url = supertest('http://localhost:8080/restaurant');
 
 describe('Restaurant CRUD Testing using sinon',()=>{
