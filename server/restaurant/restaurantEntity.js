@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 var mdb = new mongoose.Schema( {
-  resId:String,
-  resName:String,
-  resLoc:String
+  name:String,
+  address:String,
+  cuisines:String,
+  ratings:Number,
+  image:String
 
 });
  var restaur = mongoose.model('restaurant',mdb)

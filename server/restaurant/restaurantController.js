@@ -3,9 +3,11 @@ var modelRes = {
   add:function(req, res) {
       logger.debug("Inside user post");
       let newRes=new restaurant({
-        "resId":req.body.resId,
-      "resName":req.body.resName,
-      "resLoc":req.body.resLoc
+        "name":req.body.name,
+      "address":req.body.address,
+      "cuisines":req.body.cuisines,
+      "ratings":req.body.ratings,
+      "image":req.body.image
     });
           newRes.save().then((doc) =>{
         res.send(doc);
@@ -34,7 +36,7 @@ var modelRes = {
 view:function(req,res) {
 
    console.log('Inside get');
-   users.find().then((doc)=>{
+   restaurant.find().then((doc)=>{
 
    res.send(doc);
    },(err)=>{
