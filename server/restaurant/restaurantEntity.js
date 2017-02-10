@@ -3,10 +3,13 @@ mongoose.Promise = global.Promise;
 
 var mdb = new mongoose.Schema( {
   name:String,
-  address:String,
+  address:{type:String,unique:true},
   cuisines:String,
   ratings:Number,
-  image:String
+  image:String,
+  comments:{type:String,
+    default:'Add comments'
+  }
 
 });
  var restaur = mongoose.model('restaurant',mdb)

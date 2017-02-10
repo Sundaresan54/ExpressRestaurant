@@ -7,8 +7,7 @@ render:function(){
     <div className="container-fluid">
     <ul className="nav navbar-nav">
     <li><Link to="/">Home</Link></li>
-    <li><Link to="/gmailbox">Gmail</Link></li>
-    <li><Link to="/about">About Us</Link></li>
+    <li><Link to="/favourites">Favourites</Link></li>
     </ul>
     </div>
   );

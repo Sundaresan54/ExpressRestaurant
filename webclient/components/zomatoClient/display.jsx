@@ -19,7 +19,8 @@ class DisplayComponent  extends React.Component{
          address={item.restaurant.location.address}
          cuisines={item.restaurant.cuisines}
          ratings={item.restaurant.user_rating.aggregate_rating}
-       comments={item.restaurant.comments}/>
+       comments={item.restaurant.comments}
+     fav='favourite'/>
 
     });
     return (

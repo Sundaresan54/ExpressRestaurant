@@ -1,7 +1,7 @@
 var restaurant =  require('./restaurantEntity');
 var modelRes = {
   add:function(req, res) {
-      logger.debug("Inside user post");
+
       let newRes=new restaurant({
         "name":req.body.name,
       "address":req.body.address,
@@ -17,7 +17,7 @@ var modelRes = {
     },
     update:function(req, res) {
       let id = req.params.id;
-       users.findByIdAndUpdate(id,{$set:{resLoc:req.body.resLoc}},{new:true}).then((doc)=>{
+       restaurant.findByIdAndUpdate(id,{$set:{comments:req.body.comments}},{new:true}).then((doc)=>{
       res.send(doc);
     },(err)=>{
 
@@ -26,7 +26,7 @@ var modelRes = {
   },
   delete:(req, res) => {
   var id = req.params.id;
-  Todo.findByIdAndRemove(id).then((doc) => {
+  restaurant.findByIdAndRemove(id).then((doc) => {
     res.send(doc);
   },(err)=>{
 
@@ -35,7 +35,7 @@ var modelRes = {
 },
 view:function(req,res) {
 
-   console.log('Inside get');
+
    restaurant.find().then((doc)=>{
 
    res.send(doc);

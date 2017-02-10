@@ -21,13 +21,14 @@ var commentStyle = {
 class CardsComponent extends React.Component {
     constructor() {
         super();
-        this.state = {buttonName: 'Add To Favourites',colorName:'green'};
+        this.state = {comments:'',buttonName: 'Add To Favourites',colorName:'green',deleteButton:'Delete',updateButton:'Update'};
     }
 
-    whenClick() {
-    $.ajax({
+
+      addRestaurant() {
+        $.ajax({
         type: 'POST',
-        url: '/restaurant/addRestaurant',
+        url: `http://localhost:8080/restaurant/addRestaurant`,
       data: {
         'name':this.props.name,
         'address':this.props.address,
@@ -35,13 +36,62 @@ class CardsComponent extends React.Component {
         'ratings':this.props.ratings,
         'image':this.props.image
       },
+
         success: function(msg){
             this.setState({buttonName:'Added to Your Favourites',colorName:'red'});
         }.bind(this)
     });
     }
+    deleteRestaurant() {
+      var id = this.props.id;
+      $.ajax({
+          type: 'DELETE',
+          url: `http://localhost:8080/restaurant/deleteRestaurant/${id}`,
 
+          success: function(msg){
+            console.log('delete',msg)
+              this.setState({deleteButton:'deleted ',colorName:'red'});
+          }.bind(this)
+      });
+    }
+
+    updateRestaurant() {
+      var comments = this.state.comments;
+      var id = this.props.id;
+      alert(comments);
+      $.ajax({
+          type: 'PUT',
+          url: `http://localhost:8080/restaurant/updateRestaurant/${id}`,
+          data:{
+            'comments':comments
+          },
+          success: function(msg){
+            console.log('updated',msg)
+              this.setState({updateButton:'Updated ',colorName:'red'});
+          }.bind(this)
+      });
+    }
+
+updateComments(e) {
+    this.setState({comments:e.target.value})
+
+}
     render() {
+      var f=this.props.fav;
+      var del=this.props.delt;
+      var add='';
+      var delt='';
+      var text='';
+      var update ='';
+      if(f== 'favourite') {
+
+    add =<ButtonComponent  Click={this.addRestaurant.bind(this)} size='large' color={this.state.colorName || 'green'} name='stars' button={this.state.buttonName || 'Add'}/>
+    }
+    else{
+      text=<Input  type = 'text' onChange={this.updateComments.bind(this)} placeholder={this.props.comments} value ={this.state.comments} ></Input>
+      update = <ButtonComponent Click={this.updateRestaurant.bind(this)} size='large' color={this.state.colorName || 'green'} name='stars' button={this.state.updateButton || 'Update'}/>
+      delt=<ButtonComponent  Click={this.deleteRestaurant.bind(this)} size='small' color={this.state.colorName || 'green'} name='stars' button={this.state.deleteButton || 'Delete'}/>
+    }
         return (
               <div className="card">
                 <div  className="image">
@@ -59,13 +109,10 @@ class CardsComponent extends React.Component {
                 <div style={textStyle} className="extra content">
                   <span>Ratings :</span><span style={inputStyle}>{this.props.ratings}/5</span>
                   </div>
-                  <div>
-                  <Input style={commentStyle} type = 'text'  placeholder='comments' value ={this.props.comments} ></Input>
-</div>
-
-<div>
-          <ButtonComponent  Click={this.whenClick.bind(this)} size='large' color={this.state.colorName || 'green'} name='stars' button={this.state.buttonName}/>
-</div>
+                  {add}
+                  {text}
+                  {update}
+                  {delt}
 
               </div>
         );

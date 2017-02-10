@@ -6,6 +6,6 @@ const restaurantController = require('./restaurantController');
 
    router.post('/addRestaurant', restaurantController.add);
    router.delete('/deleteRestaurant/:id', restaurantController.delete);
-   router.post('/updateRestaurant/:id', restaurantController.update);
+   router.put('/updateRestaurant/:id', restaurantController.update);
    router.get('/viewRestaurant', restaurantController.view);
 module.exports = router;

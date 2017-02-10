@@ -6,9 +6,13 @@ class ButtonComponent extends React.Component {
     super();
   }
   render() {
+    var style = {
+      color: 'orange',
+
+    }
     return (
       <div>
-      <button className="ui button primary" onClick ={this.props.Click} >{this.props.button}</button>
+      <button className='ui large button  grey' style={style} onClick ={this.props.Click} >{this.props.button}</button>
 </div>
   );
   }
